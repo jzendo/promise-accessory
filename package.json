@@ -1,6 +1,6 @@
 {
   "name": "promise-accessory",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "The accessory util is based on promise.",
   "repository": "https://github.com/jzendo/promise-accessory.git",
   "author": "zendo <jzendo@example.com>",
@@ -12,7 +12,8 @@
     "defer",
     "promise",
     "timeout",
-    "prromise result"
+    "prromisify",
+    "accessory util"
   ],
   "files": [
     "build",
