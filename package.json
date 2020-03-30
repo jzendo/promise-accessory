@@ -1,0 +1,52 @@
+{
+  "name": "promise-accessory",
+  "version": "0.1.0",
+  "description": "The accessory util is based on promise.",
+  "repository": "https://github.com/jzendo/promise-accessory.git",
+  "author": "zendo <jzendo@example.com>",
+  "main": "build/bundle.js",
+  "license": "MIT",
+  "keywords": [
+    "util",
+    "delay",
+    "defer",
+    "promise",
+    "timeout",
+    "prromise result"
+  ],
+  "files": [
+    "build",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "babel-jest": "^25.2.4",
+    "jest": "^25.2.4",
+    "promise-polyfill": "^8.1.3",
+    "rollup": "^2.3.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-inject-process-env": "^1.1.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "standard": "^14.3.3"
+  },
+  "standard": {
+    "ignore": [
+      "/lib/**",
+      "jest.config.js"
+    ]
+  },
+  "scripts": {
+    "build": "npm run build:umd && npm run build:cjs",
+    "build:umd": "rollup --config",
+    "build:cjs": "babel --no-comments src --out-dir lib --ignore \"src/index.js\" --ignore \"src/**/__tests__/**\"",
+    "test": "jest",
+    "lint": "standard --lint",
+    "lint:fix": "standard --fix"
+  }
+}
