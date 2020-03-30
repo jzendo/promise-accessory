@@ -1,3 +1,4 @@
+import P from './common/p'
 import timer from './common/timer'
 
 const MAX_MS = 24 * 60 * 60 * 1000 // 1day's ms
@@ -17,10 +18,22 @@ const isInteger = ms => {
  * @param {Integer} ms the m-seconds for delaying
  * @returns {Promise}
  */
-export default (ms = DEFAULT_MS) => {
+function delay (ms = DEFAULT_MS) {
   ms = isInteger(ms) ? ms : DEFAULT_MS
   return new Promise(resolve => setTimeoutImpl(resolve, ms))
 }
+
+/**
+ * Wrapped with delay
+ *
+ * @param {Integer} ms the m-seconds for delaying
+ * @returns {function} the delay function
+ */
+function delay$ (ms = DEFAULT_MS) {
+  return () => delay(ms)
+}
+
+export default P(delay, delay$)
 
 export {
   DEFAULT_MS,

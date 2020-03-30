@@ -10,9 +10,15 @@ The accessory util is based on promise.
 
 ```javascript
 
-  // 123 outputing will be delay with 100ms
-  somePromise.then(() => delay(100)).then(() => console.log(123))
+  import {delay} from 'promise-accessory'
+  // ...
 
+  // The `console.log` execution will be delayed with 100ms
+  somePromise
+    .then(() => delay(100)) // Or replace with `.then(delay.P(100))`
+    .then(() => console.log('delay'))
+
+  // ...
 ```
 
 - `defer`
@@ -20,15 +26,14 @@ The accessory util is based on promise.
   spread promise's resolve and reject out for your convenience.
 
 ```javascript
+
+  import {defer} from 'promise-accessory'
+
   function somePromise () {
     const {resolve, promise} = defer()
-
     // ...
-
-    resolve(123)
-
+    resolve('defer')
     // ...
-
     return promise
   }
 

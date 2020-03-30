@@ -1,7 +1,9 @@
+import P from './common/p'
+
 /**
  * @returns {{resolve, reject, promise}}
  */
-export default () => {
+function defer () {
   let resolve
   let reject
 
@@ -16,3 +18,10 @@ export default () => {
     promise
   }
 }
+
+function defer$ () {
+  return () => defer()
+}
+
+
+export default P(defer, defer$)
