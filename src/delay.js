@@ -1,8 +1,10 @@
+import timer from './common/timer'
+
 const MAX_MS = 24 * 60 * 60 * 1000 // 1day's ms
 const DEFAULT_MS = 100 // 100 ms
 
-const setTimeout = (fn, ms) => {
-  return window.setTimeout(fn, ms)
+const setTimeoutImpl = (fn, ms) => {
+  return timer.setTimeout(fn, ms)
 }
 
 const isInteger = ms => {
@@ -17,7 +19,7 @@ const isInteger = ms => {
  */
 export default (ms = DEFAULT_MS) => {
   ms = isInteger(ms) ? ms : DEFAULT_MS
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise(resolve => setTimeoutImpl(resolve, ms))
 }
 
 export {

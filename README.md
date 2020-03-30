@@ -34,6 +34,6 @@ The accessory util is based on promise.
 
 ```
 
-## Tell me what your think
+## Tell me what's next
 
-What util is it should include ?
+What util is it should include?
