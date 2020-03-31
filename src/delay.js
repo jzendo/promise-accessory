@@ -9,9 +9,9 @@ const setTimeoutImpl = (fn, ms) => {
 }
 
 const isInteger = ms => {
-  return typeof ms === 'number'
-    && Number.isFinite(ms) && ms <= MAX_MS // Limit MAX
-    && ms % 1 === 0 // Simple checking integer
+  return typeof ms === 'number' &&
+    Number.isFinite(ms) && ms <= MAX_MS && // Limit MAX
+    ms % 1 === 0 // Simple checking integer
 }
 
 /**

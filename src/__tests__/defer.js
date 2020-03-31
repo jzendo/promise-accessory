@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-/* global describe, test, expect */
+/* global describe, test, expect, jest */
 import defer from '../defer'
 
 const testCase = (msg, defer) => {

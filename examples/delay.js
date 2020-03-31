@@ -16,11 +16,14 @@ const promises = [
 const getTime = () => new Date().getTime()
 
 const doJobs = () => {
-  const {resolve, reject, promise} = defer()
-  return promises.reduce((r, current) => {
+  const { resolve, reject, promise } = defer()
+
+  promises.reduce((r, current) => {
     r = r.then(current)
     return r
   }, Promise.resolve()).then(resolve).catch(reject)
+
+  return promise
 }
 
 const startTime = getTime()

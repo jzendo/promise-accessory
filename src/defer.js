@@ -7,6 +7,7 @@ function defer () {
   let resolve
   let reject
 
+  // eslint-disable-next-line
   const promise = new Promise((resolve_, reject_) => {
     resolve = resolve_
     reject = reject_
@@ -22,6 +23,5 @@ function defer () {
 function defer$ () {
   return () => defer()
 }
-
 
 export default P(defer, defer$)

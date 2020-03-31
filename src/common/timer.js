@@ -6,7 +6,7 @@ const methods = {
   setTimeout: isWx ? setTimeout : global.setTimeout,
   clearTimeout: isWx ? clearTimeout : global.clearTimeout,
   setInterval: isWx ? setInterval : global.setInterval,
-  clearInterval: isWx ? clearInterval : global.clearInterval,
+  clearInterval: isWx ? clearInterval : global.clearInterval
 }
 
 export default methods

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-/* global describe, test, expect */
+/* global describe, test, expect, jest */
 import delay, { DEFAULT_MS, MAX_MS } from '../delay'
 
 jest.useFakeTimers()
