@@ -28,6 +28,7 @@
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "babel-jest": "^25.2.4",
+    "husky": "^4.2.3",
     "jest": "^25.2.4",
     "promise-polyfill": "^8.1.3",
     "rollup": "^2.3.0",
@@ -50,5 +51,11 @@
     "test": "jest --runInBand",
     "lint": "standard --lint",
     "lint:fix": "standard --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:fix",
+      "pre-push": "npm test"
+    }
   }
 }
