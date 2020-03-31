@@ -6,20 +6,7 @@ The accessory util is based on promise.
 
 - `delay`
 
-  make the delay with promise's implement.
-
-```javascript
-
-  import {delay} from 'promise-accessory'
-  // ...
-
-  // The `console.log` execution will be delayed with 100ms
-  somePromise
-    .then(() => delay(100)) // Or replace with `.then(delay.P(100))`
-    .then(() => console.log('delay'))
-
-  // ...
-```
+  delay the following job.  [demo](./examples/delay.js)
 
 - `defer`
 
@@ -38,6 +25,10 @@ The accessory util is based on promise.
   }
 
 ```
+
+- `retry`
+
+  retry times for better resolved. [demo](./examples/retry.js)
 
 ## Tell me what's next
 
