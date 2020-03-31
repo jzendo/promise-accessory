@@ -1,4 +1,4 @@
-import P from './common/p'
+import p from './common/p'
 
 /**
  * @returns {{resolve, reject, promise}}
@@ -24,4 +24,4 @@ function defer$ () {
   return () => defer()
 }
 
-export default P(defer, defer$)
+export default p(defer, defer$)

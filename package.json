@@ -1,6 +1,6 @@
 {
   "name": "promise-accessory",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "The accessory util is based on promise.",
   "repository": "https://github.com/jzendo/promise-accessory.git",
   "author": "zendo <jzendo@example.com>",

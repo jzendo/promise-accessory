@@ -3,7 +3,7 @@
  */
 
 /* global describe, test, expect, jest */
-import delay, { DEFAULT_MS, MAX_MS } from '../delay'
+import delay, { DEFAULT_MS, MAX_MS, MIN_MS } from '../delay'
 
 jest.useFakeTimers()
 
@@ -19,10 +19,9 @@ const testCase = (msg, delayFn) => {
   describe(msg, () => {
     /**
      * @param {Number} ms wanted MS
-     * @param {Integer} realDelayMS the real using MS in internal
      */
-    const testDelayWithMS = function (ms = 100, realDelayMS = 100) {
-      const msg = ms !== 100 ? `${ms}ms` : 'default parameter'
+    const testDelayWithMS = function (ms = DEFAULT_MS) {
+      const msg = ms !== DEFAULT_MS ? `${ms}ms` : 'default parameter'
 
       test(`call with ${msg}`, done => {
         const fn = jest.fn()
@@ -37,7 +36,7 @@ const testCase = (msg, delayFn) => {
         )
 
         // Forward the timer
-        jest.advanceTimersByTime(realDelayMS)
+        jest.advanceTimersByTime(ms)
 
         delayPromise.then(fn).then(() => {
           expect(fn).toHaveBeenCalledTimes(1)
@@ -48,19 +47,21 @@ const testCase = (msg, delayFn) => {
 
     test('should be function', () => {
       expect(() => delay_()).not.toThrow()
+      expect(() => delay_(200)).not.toThrow()
+
+      expect(() => delay_(-100)).toThrow()
+      expect(() => delay_(1.2)).toThrow()
+      expect(() => delay_(123.0001)).toThrow()
+
+      expect(() => delay_(MIN_MS - 1)).toThrow()
+      expect(() => delay_(MAX_MS + 1)).toThrow()
     })
 
-    // -- legal parameters
-    // default
     testDelayWithMS()
-    // integer
-    testDelayWithMS(200, 200)
-
-    // -- illegal paramaters
-    // float
-    testDelayWithMS(200.123, DEFAULT_MS)
-    // out of bound
-    testDelayWithMS(MAX_MS + 1, DEFAULT_MS)
+    testDelayWithMS(200)
+    testDelayWithMS(DEFAULT_MS)
+    testDelayWithMS(MIN_MS)
+    testDelayWithMS(MAX_MS)
   })
 }
 
