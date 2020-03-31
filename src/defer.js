@@ -1,4 +1,5 @@
-import P from './common/p'
+import p from './common/p'
+import getPromiseInstance from './common/promise'
 
 /**
  * @returns {{resolve, reject, promise}}
@@ -8,7 +9,7 @@ function defer () {
   let reject
 
   // eslint-disable-next-line
-  const promise = new Promise((resolve_, reject_) => {
+  const promise = getPromiseInstance((resolve_, reject_) => {
     resolve = resolve_
     reject = reject_
   })
@@ -24,4 +25,4 @@ function defer$ () {
   return () => defer()
 }
 
-export default P(defer, defer$)
+export default p(defer, defer$)

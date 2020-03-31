@@ -1,6 +1,9 @@
-import P from './common/p'
+import invariant from '@jzendo/utils/lib/common/invariant'
+import p from './common/p'
 import timer from './common/timer'
+import getPromiseInstance from './common/promise'
 
+const MIN_MS = 10
 const MAX_MS = 24 * 60 * 60 * 1000 // 1day's ms
 const DEFAULT_MS = 100 // 100 ms
 
@@ -10,7 +13,7 @@ const setTimeoutImpl = (fn, ms) => {
 
 const isInteger = ms => {
   return typeof ms === 'number' &&
-    Number.isFinite(ms) && ms <= MAX_MS && // Limit MAX
+    ms <= MAX_MS && ms >= MIN_MS && // Limit MAX
     ms % 1 === 0 // Simple checking integer
 }
 
@@ -19,8 +22,9 @@ const isInteger = ms => {
  * @returns {Promise}
  */
 function delay (ms = DEFAULT_MS) {
-  ms = isInteger(ms) ? ms : DEFAULT_MS
-  return new Promise(resolve => setTimeoutImpl(resolve, ms))
+  invariant(isInteger(ms), `The \`ms\` should be integer and only between ${MIN_MS} and ${MAX_MS}.`)
+
+  return getPromiseInstance(resolve => setTimeoutImpl(resolve, ms))
 }
 
 /**
@@ -30,12 +34,13 @@ function delay (ms = DEFAULT_MS) {
  * @returns {function} the delay function
  */
 function delay$ (ms = DEFAULT_MS) {
-  return () => delay(ms)
+  return () => delay(...arguments)
 }
 
-export default P(delay, delay$)
+export default p(delay, delay$)
 
 export {
   DEFAULT_MS,
-  MAX_MS
+  MAX_MS,
+  MIN_MS
 }
