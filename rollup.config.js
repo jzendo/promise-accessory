@@ -8,8 +8,8 @@ import pkg from './package.json'
 
 const banner = `
 /*!
- * ${pkg.name} - ${pkg.description}
- * ${pkg.license}, version: ${pkg.version}, build: ${new Date().toUTCString()}
+ * ${pkg.name} v${pkg.version} ${pkg.license} license <Build ${new Date().toUTCString()}>
+ * ${pkg.description}
  */
 `
 
