@@ -1,0 +1,3 @@
+{
+  "!({/build/**, /lib/**, jest.config}).js": "npm run lint:fix"
+}
